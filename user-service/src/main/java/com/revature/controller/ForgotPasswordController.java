@@ -1,20 +1,24 @@
 package com.revature.controller;
 
-import javax.mail.MessagingException;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.entity.User;
-import com.revature.mail.JavaMailUtil;
+import com.revature.service.UserService;
 
+@RestController
+@RequestMapping("/api")
 public class ForgotPasswordController {
 	
-	public static void main(String[] args) throws MessagingException {
-		
-		User user = new User();
-		user.setEmail("sauleff@gmail.com");
-		
-		JavaMailUtil.sendMail(user, "http:www.google.com");
-		
+	UserService userService;
+	public ForgotPasswordController(UserService userService) {
+		this.userService=userService;
 	}
+	
+	@RequestMapping("/hello")
+	public String hello() {
+		return "Hey there!";
+	}
+	
 	
 
 }
