@@ -1,9 +1,14 @@
 package com.revature.dto;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class UserDTO {
+public class UserDTO implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1798954522740067210L;
 	private long id;
 	private String email;
 	private String password;
