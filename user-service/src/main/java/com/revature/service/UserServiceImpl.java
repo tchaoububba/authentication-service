@@ -3,6 +3,8 @@ package com.revature.service;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,19 +20,23 @@ public class UserServiceImpl implements UserService{
 		this.userRepository= userRepository;
 	}
 
+
 	@Override
+	@Transactional
 	public void createUser(User user) {
 		userRepository.save(user);
 		
 	}
 	
 	@Override
+	@Transactional
 	public List<User> getAllUsers() {
 		
 		return (List<User>) userRepository.findAll();
 	}
 
 	@Override
+	@Transactional
 	public User getUserById(long userId) {
 
 		//Optional is a java 8 feature
@@ -48,15 +54,28 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
+	@Transactional
 	public void updateUserById(User user) {
 		
 		
 	}
 
 	@Override
+	@Transactional
 	public void deleteUserById(long userId) {
 		userRepository.deleteById(userId);
 		
+	}
+	@Override
+	@Transactional
+	public User Authenticate(User user) {
+		User temp= userRepository.findByEmailReturnStream(user.getEmail());
+		if(temp.getPassword().equals(user.getPassword())) {
+			return temp;
+		}
+		else {
+			return null;
+		}
 	}
 
 	
