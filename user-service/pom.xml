@@ -20,6 +20,7 @@
 	</properties>
 
 	<dependencies>
+<<<<<<< HEAD
 	
 	<!-- https://mvnrepository.com/artifact/javax.mail/javax.mail-api -->
 		<dependency>
@@ -28,6 +29,13 @@
 				<version>1.6.2</version><!--$NO-MVN-MAN-VER$-->
 		</dependency>
 		
+=======
+	<dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+>>>>>>> 011435c7cb40f9a29010f586f58de4ad3409277f
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
