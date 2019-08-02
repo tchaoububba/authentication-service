@@ -1,5 +1,10 @@
 package com.revature.repository;
 
-public class UserRepository {
+import org.springframework.data.repository.CrudRepository;
+
+import com.revature.entity.User;
+
+public interface UserRepository extends CrudRepository<User, Long>{
+	
 
 }
