@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.revature.entity.User;
@@ -15,9 +16,11 @@ import com.revature.repository.UserRepository;
 public class UserServiceImpl implements UserService{
 	
 	private UserRepository userRepository;
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	@Autowired
-	public UserServiceImpl(UserRepository userRepository) {
+	public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
 		this.userRepository= userRepository;
+		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
 	}
 
 
