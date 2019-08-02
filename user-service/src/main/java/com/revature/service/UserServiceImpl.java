@@ -1,6 +1,7 @@
 package com.revature.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,27 +19,46 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
+	public void createUser(User user) {
+		userRepository.save(user);
+		
+	}
+	
+	@Override
 	public List<User> getAllUsers() {
 		
-		return null;
+		return (List<User>) userRepository.findAll();
 	}
 
 	@Override
 	public User getUserById(long userId) {
-		// TODO Auto-generated method stub
-		return null;
+
+		//Optional is a java 8 feature
+		Optional<User> result = userRepository.findById(userId);
+		User user = null;
+		
+		if (result.isPresent()) {
+			user = result.get();
+		} else {
+			throw new RuntimeException("Did not find book id "+userId);
+		}
+		
+		return user;
+		
 	}
 
 	@Override
-	public void updateUserById(long userId) {
-		// TODO Auto-generated method stub
+	public void updateUserById(User user) {
+		
 		
 	}
 
 	@Override
 	public void deleteUserById(long userId) {
-		// TODO Auto-generated method stub
+		userRepository.deleteById(userId);
 		
 	}
+
+	
 
 }
