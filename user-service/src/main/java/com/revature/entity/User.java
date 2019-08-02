@@ -43,8 +43,9 @@ public class User {
 	
 public User() { }
 
-
-
+public User(String email) {
+	this.email=email;
+}
 
 public User(String email, String password) {
 	super();
@@ -53,10 +54,10 @@ public User(String email, String password) {
 }
 
 
-public User(String resetToken) {
-	super();
-	this.resetToken = resetToken;
-}
+//public User(String resetToken) {
+//	super();
+//	this.resetToken = resetToken;
+//}
 
 
 public User(long id, String email, String password, String firstName, String lastName, Date createdDate,
