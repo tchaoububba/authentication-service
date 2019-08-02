@@ -4,5 +4,6 @@ spring:
       name: user-service
       discovery:
         service-id: config
-        enabled: true  mvc:    servlet:      path: /cmsforce/user/*
+        enabled: true
+          mvc:    servlet:      path: /cmsforce/user/
         
